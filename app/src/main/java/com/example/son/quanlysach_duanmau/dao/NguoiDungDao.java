@@ -44,12 +44,13 @@ public class NguoiDungDao {
         }
         return 1;
     }
-    public List<NguoiDung> getAllNguoiDung(){
-        List<NguoiDung > ls=new ArrayList<NguoiDung>();
-        Cursor cursor=database.query(TABLE_NAME,null,null,null,null,null,null);
+
+    public List<NguoiDung> getAllNguoiDung() {
+        List<NguoiDung> ls = new ArrayList<NguoiDung>();
+        Cursor cursor = database.query(TABLE_NAME, null, null, null, null, null, null);
         cursor.moveToFirst();
-        while (cursor.isAfterLast()==false){
-            NguoiDung nguoiDung=new NguoiDung();
+        while (cursor.isAfterLast() == false) {
+            NguoiDung nguoiDung = new NguoiDung();
             nguoiDung.setUserName(cursor.getString(0));
             nguoiDung.setPassWord(cursor.getString(1));
             nguoiDung.setPhone(cursor.getString(2));
@@ -60,4 +61,31 @@ public class NguoiDungDao {
         cursor.close();
         return ls;
     }
+
+    public int deleteNguoiDung(String username) {
+        int result = database.delete(TABLE_NAME, "username=?", new String[]{username});
+        if (result < 0){
+            return -1;
+        }
+        return 1;
+
+    }
+    public int updateNguoiDung(NguoiDung nd) {
+        ContentValues values = new ContentValues();
+        values.put("username", nd.getUserName());
+        values.put("password", nd.getPassWord());
+        values.put("phone", nd.getPhone());
+        values.put("hoten", nd.getFullName());
+        try{
+            if (database.update(TABLE_NAME, values, "username=?", new String[]{nd.getUserName()})< 0) {
+                return -1;
+            }
+
+        }catch (Exception ex){
+            Log.e("NguoidungDao", ex.getMessage());
+        }
+        return 1;
+
+    }
+
 }

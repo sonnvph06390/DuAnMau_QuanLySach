@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.support.v4.app.NavUtils;
 
 import com.example.son.quanlysach_duanmau.dao.NguoiDungDao;
+import com.example.son.quanlysach_duanmau.dao.TheLoaiDao;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "DbbookManager";
@@ -18,10 +19,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(NguoiDungDao.SQL_NGUOI_DUNG);
+        sqLiteDatabase.execSQL(TheLoaiDao.SQL_THE_LOAI);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " +NguoiDungDao.TABLE_NAME);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " +TheLoaiDao.TABLE_NAME);
     }
 }

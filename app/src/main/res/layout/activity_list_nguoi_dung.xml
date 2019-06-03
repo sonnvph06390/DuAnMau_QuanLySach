@@ -5,20 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
     tools:context=".ListNguoiDungActivity">
     <Button
+        android:layout_gravity="center"
         android:id="@+id/btnAddUserActivity"
         android:text="Them User"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-    <ListView
-        android:id="@+id/lvNguoiDung"
+    <!--<ListView-->
+        <!--android:id="@+id/lvNguoiDung"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:text="Danh sách người dùng"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content" />-->
+    <android.support.v7.widget.RecyclerView
         android:layout_gravity="center"
-        android:text="Danh sách người dùng"
+        android:id="@+id/rcvListUser"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-
-
+        android:layout_height="wrap_content"/>
 </LinearLayout>

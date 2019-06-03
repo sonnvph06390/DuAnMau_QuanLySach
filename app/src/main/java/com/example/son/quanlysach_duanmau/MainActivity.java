@@ -17,6 +17,5 @@ public class MainActivity extends AppCompatActivity {
     public void ViewNguoiDung(View view) {
         Intent intent=new Intent(this, ListNguoiDungActivity.class);
         startActivity(intent);
-
     }
 }
